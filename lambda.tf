@@ -20,7 +20,7 @@ resource "aws_lambda_function" "event_driven_install_uninstall" {
 }
 
 resource "aws_iam_role" "iam_for_lambda" {
-  name = "iam-for-lambda"
+  name = "event-driven-install-uninstall"
 
   assume_role_policy = <<EOF
 {
