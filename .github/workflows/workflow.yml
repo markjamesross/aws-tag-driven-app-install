@@ -1,0 +1,57 @@
+name: workflow
+on: 
+  push:
+    branches:
+      - '**'
+    tags-ignore:
+      - '*.*'
+defaults:
+  run:
+    shell: bash
+
+jobs:   
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: hashicorp/setup-terraform@v1
+    - uses: actions/checkout@v2
+    - name: Validate Code
+      run: |
+           export AWS_DEFAULT_REGION=eu-west-1
+           terraform init
+           terraform validate
+
+  format:
+    runs-on: ubuntu-latest
+    needs: [validate]
+    steps:
+    - uses: hashicorp/setup-terraform@v1
+    - uses: actions/checkout@v2
+    - name: Terraform Fmt
+      run:  terraform fmt -recursive
+    - name: Commit Changes
+      run: |
+           git config --local user.email "action@github.com"
+           git config --local user.name "GitHub Action"
+           git diff-index --quiet HEAD || git commit -m "terraform-fmt-via-cicd: automated action" -a
+           git push
+
+  docs:
+    runs-on: ubuntu-latest
+    needs: [format]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Git Pull
+        run: |
+             git pull
+             git config --local user.email "action@github.com"
+             git config --local user.name "GitHub Action"
+      - name: Render terraform docs inside README.md and push changes back to PR branch
+        uses: Dirrk/terraform-docs@v1.0.8
+        with:
+          tf_docs_working_dir: .
+          tf_docs_output_file: README.md
+          tf_docs_output_method: inject
+          tf_docs_git_push: 'true'
+          tf_docs_git_commit_message: 'terraform-docs-via-cicd: automated action'
