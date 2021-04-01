@@ -8,13 +8,16 @@ Please see [blog](https://markrosscloud.medium.com/) for more deatils
 <!--- BEGIN_TF_DOCS --->
 ## Requirements
 
-No requirements.
+| Name | Version |
+|------|---------|
+| terraform | >= 0.14.0 |
+| aws | >= 3.20.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| aws | n/a |
+| aws | >= 3.20.0 |
 
 ## Inputs
 
