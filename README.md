@@ -13,11 +13,13 @@ Please see [blog](https://markrosscloud.medium.com/) for more deatils
 | terraform | >= 0.14.0 |
 | aws | >= 3.20.0 |
 
+
 ## Providers
 
 | Name | Version |
 |------|---------|
 | aws | >= 3.20.0 |
+| aws | n/a |
 
 ## Inputs
 
