@@ -12,6 +12,7 @@ resource "aws_ssm_document" "event_driven_install" {
             inputs:
               runCommand:
                 - "sudo yum -y install httpd"
+                - "sudo apachectl start"
 DOC
   tags    = merge({ Name = var.ssm_document_install }, var.tags)
 }
@@ -29,6 +30,7 @@ resource "aws_ssm_document" "event_driven_uninstall" {
             name: "deregister"
             inputs:
               runCommand:
+                - "sudo apachectl stop"
                 - "sudo yum -y remove httpd"
 DOC
   tags    = merge({ Name = var.ssm_document_uninstall }, var.tags)
