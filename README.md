@@ -1,15 +1,24 @@
 # aws-tag-driven-app-install
-Repo to demonstrate AWS tag driven application installation
+Repo to demonstrate AWS tag driven application installation using EventBridge, Lambda and SSM Documents.
+Should be considered a proof of concept, in customer envrionmetns I would expect a centrally driven, cross account approach.
+
+Please see [blog](https://markrosscloud.medium.com/) for more deatils
+
 
 <!--- BEGIN_TF_DOCS --->
 ## Requirements
 
-No requirements.
+| Name | Version |
+|------|---------|
+| terraform | >= 0.14.0 |
+| aws | >= 3.20.0 |
+
 
 ## Providers
 
 | Name | Version |
 |------|---------|
+| aws | >= 3.20.0 |
 | aws | n/a |
 
 ## Inputs
