@@ -2,7 +2,7 @@
 Repo to demonstrate AWS tag driven application installation using EventBridge, Lambda and SSM Documents.
 Should be considered a proof of concept, in customer envrionmetns I would expect a centrally driven, cross account approach.
 
-Please see [blog](https://markrosscloud.medium.com/) for more deatils
+Please see [blog article](https://markrosscloud.medium.com/aws-event-driven-application-installs-on-ec2-98826b58f4e5) for more deatils
 
 
 <!--- BEGIN_TF_DOCS --->
